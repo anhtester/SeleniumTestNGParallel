@@ -56,6 +56,7 @@ public class ClientPage extends CommonPage {
     }
 
     public void enterDataSearchClient(String value) {
+        webUI.moveToElement(searchInput);
         webUI.clearText(searchInput);
         webUI.setText(searchInput, value);
     }

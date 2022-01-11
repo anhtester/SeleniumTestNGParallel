@@ -23,19 +23,16 @@ public class ClientsTest extends BaseWeb {
     SignInPage signInPage;
     DashboardPage dashboardPage;
     ClientPage clientPage;
-    WebUI webUI = null;
-
-    @BeforeMethod
-    public void Setup() {
-        Helpers.logConsole(Thread.currentThread().getId());
-        webUI = new WebUI();
-        SignIn();
-    }
 
     @Step("Login to CRM system")
     public void SignIn() {
         signInPage = new SignInPage();
         dashboardPage = signInPage.signIn(Props.getValue("emailAdmin"), Helpers.decrypt(Props.getValue("password")));
+    }
+    
+    @BeforeMethod
+    public void Setup() {
+        SignIn();
     }
 
     @Test(priority = 1, description = "Add Client")

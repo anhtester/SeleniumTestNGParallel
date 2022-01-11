@@ -9,11 +9,11 @@ import org.testng.Assert;
 public class CommonTest {
 
     private WebDriver driver;
-    private WebUI webUi;
+    private WebUI webUI;
 
     public CommonTest(WebDriver driver) {
         this.driver = driver;
-        webUi = new WebUI();
+        webUI = new WebUI();
     }
 
     private String headerPinFromText = "Change Confirmation";
@@ -29,11 +29,11 @@ public class CommonTest {
     private By closeAlertMessageBtn = By.className("notify-close-btn");
 
     public void validateAlertMessage(String message) {
-        webUi.waitForPageLoaded();
+        webUI.waitForPageLoaded();
         WebElement element = driver.findElement(contentAlertMessage);
         System.out.println("Alert message: " + element.getText());
         Assert.assertTrue(element.getText().equals(message), "The message does not match.");
-        webUi.clickElement(closeAlertMessageBtn);
+        webUI.clickElement(closeAlertMessageBtn);
     }
 
 }

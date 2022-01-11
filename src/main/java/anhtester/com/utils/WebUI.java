@@ -22,13 +22,13 @@ import java.util.List;
 
 public class WebUI {
 
-    private static WebDriver driver;
+    private WebDriver driver;
 
     private Actions action;
     private Robot robot;
     private Select select;
     private WebDriverWait wait;
-    private static JavascriptExecutor js;
+    private JavascriptExecutor js;
     public static final int IMPLICIT_WAIT = Constants.IMPLICIT_WAIT;
     public static final int PAGE_LOAD_TIMEOUT = Constants.PAGE_LOAD_TIMEOUT;
 
@@ -641,10 +641,9 @@ public class WebUI {
     }
 
     //Handle Table
-    public static void checkContainsSearchTableByColumn(int column, String value) {
+    public void checkContainsSearchTableByColumn(int column, String value) {
         List<WebElement> totalRows = driver.findElements(By.xpath("//tbody/tr"));
         WebUI.sleep(1);
-        Log.info("");
         Log.info("Số kết quả cho từ khóa (" + value + "): " + totalRows.size());
 
         for (int i = 1; i <= totalRows.size(); i++) {
@@ -657,7 +656,7 @@ public class WebUI {
         }
     }
 
-    public static ArrayList getValueTableByColumn(int column) {
+    public ArrayList getValueTableByColumn(int column) {
         List<WebElement> totalRows = driver.findElements(By.xpath("//tbody/tr"));
         WebUI.sleep(1);
         Log.info("Số kết quả cho cột (" + column + "): " + totalRows.size());

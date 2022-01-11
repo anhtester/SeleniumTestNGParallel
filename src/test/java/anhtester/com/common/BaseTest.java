@@ -16,7 +16,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 
-    private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     public static final int IMPLICIT_WAIT = Constants.IMPLICIT_WAIT;
     public static final int PAGE_LOAD_TIMEOUT = Constants.PAGE_LOAD_TIMEOUT;
