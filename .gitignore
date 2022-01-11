@@ -1,0 +1,9 @@
+/bin/
+/.idea
+/.allure
+/ExportData
+/ExtentReports
+/logs
+/target
+HDSD.txt
+
