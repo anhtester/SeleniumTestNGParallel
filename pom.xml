@@ -38,7 +38,7 @@
         <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
         <google.zxing.version>3.4.1</google.zxing.version>
 
-        <suite>Clients</suite>
+        <suite>Clients-parallel</suite>
     </properties>
 
     <dependencies>
@@ -228,7 +228,7 @@
                         <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/suites/${suite}.xml</suiteXmlFile>
+                                <suiteXmlFile>src/test/resources/suites/Clients-parallel.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>

@@ -29,9 +29,9 @@ public class ClientsTest extends BaseWeb {
         signInPage = new SignInPage();
         dashboardPage = signInPage.signIn(Props.getValue("emailAdmin"), Helpers.decrypt(Props.getValue("password")));
     }
-    
+
     @BeforeMethod
-    public void Setup() {
+    public void beforeSteps() {
         SignIn();
     }
 
