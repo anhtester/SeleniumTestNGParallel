@@ -21,7 +21,7 @@ import java.util.Set;
 public class TestHandle {
 
     WebDriver driver;
-    WebUI webUi;
+    WebUI webUI;
     DatabaseHelpers databaseHelpers;
     SignInPage signInPage;
     DashboardPage dashboardPage;
@@ -31,15 +31,15 @@ public class TestHandle {
     public void Setup() {
         //driver = BaseTest.createDriver("chrome"); //Cách khởi tạo thứ 1
         driver = new BrowserFactory().createDriver("chrome"); //Cách khởi tạo thứ 2
-        webUi = new WebUI();
+        webUI = new WebUI();
     }
 
     @Test
     public void handleNotificationsBrowser() {
-        WebDriver driver = new ChromeDriver(webUi.notificationsBlock());
+        WebDriver driver = new ChromeDriver(webUI.notificationsBlock());
         driver.manage().window().maximize();
         driver.get("https://oto.com.vn/mua-ban-xe");
-        WebUI.sleep(4);
+        webUI.sleep(4);
         driver.close();
     }
 
@@ -52,12 +52,12 @@ public class TestHandle {
         By fromElement2 = By.xpath("(//li[@id='fourth'])[2]");
         By toElement2 = By.xpath("(//div[@id='shoppingCart4']//div)[1]");
 
-        //webUi.switchToFrameByElement(toElement);
-        //webUi.scrollToElement(toElement);
-        webUi.dragAndDrop(fromElement1, toElement1);
-        WebUI.sleep(1);
-        webUi.dragAndDropElement(fromElement2, toElement2);
-        WebUI.sleep(2);
+        //webUI.switchToFrameByElement(toElement);
+        //webUI.scrollToElement(toElement);
+        webUI.dragAndDrop(fromElement1, toElement1);
+        webUI.sleep(1);
+        webUI.dragAndDropElement(fromElement2, toElement2);
+        webUI.sleep(2);
     }
 
     @Test
@@ -66,51 +66,51 @@ public class TestHandle {
         By fromElement1 = By.xpath("//a[normalize-space()='BANK']");
         By toElement1 = By.xpath("(//div[@id='shoppingCart1']//div)[1]");
 
-        int X1 = webUi.findWebElement(fromElement1).getLocation().getX();
-        int Y1 = webUi.findWebElement(fromElement1).getLocation().getY();
-        webUi.logConsole(X1 + " , " + Y1);
+        int X1 = webUI.findWebElement(fromElement1).getLocation().getX();
+        int Y1 = webUI.findWebElement(fromElement1).getLocation().getY();
+        webUI.logConsole(X1 + " , " + Y1);
 
-        int X2 = webUi.findWebElement(toElement1).getLocation().getX();
-        int Y2 = webUi.findWebElement(toElement1).getLocation().getY();
-        webUi.logConsole(X2 + " , " + Y2);
+        int X2 = webUI.findWebElement(toElement1).getLocation().getX();
+        int Y2 = webUI.findWebElement(toElement1).getLocation().getY();
+        webUI.logConsole(X2 + " , " + Y2);
 
-        //webUi.switchToFrameByElement(toElement);
-        //webUi.scrollToElement(toElement);
-        webUi.dragAndDropOffset(fromElement1, -402, 246); //Nhớ là Tính từ vị trí click chuột đầu tiên
-        WebUI.sleep(2);
+        //webUI.switchToFrameByElement(toElement);
+        //webUI.scrollToElement(toElement);
+        webUI.dragAndDropOffset(fromElement1, -402, 246); //Nhớ là Tính từ vị trí click chuột đầu tiên
+        webUI.sleep(2);
     }
 
     @Test
     public void handleHighLightElement() {
         driver.get("https://hrm.anhtester.com/");
         By button = By.xpath("//button[@type='submit']");
-        webUi.highLightElement(button); //Tô màu viền đỏ cho Element trên website
-        webUi.verifyElementAttributeValue(button, "type", "submit", 10);
-        webUi.waitForElementClickable(button, 5);
-        WebUI.sleep(2);
+        webUI.highLightElement(button); //Tô màu viền đỏ cho Element trên website
+        webUI.verifyElementAttributeValue(button, "type", "submit", 10);
+        webUI.waitForElementClickable(button, 5);
+        webUI.sleep(2);
     }
 
     @Test
     public void handleUploadFile() {
         driver.get("https://demoqa.com/upload-download");
-        webUi.waitForPageLoaded();
-        webUi.sleep(1);
+        webUI.waitForPageLoaded();
+        webUI.sleep(1);
 
         //Cách 1 sendKeys link từ source
-        webUi.uploadFileSendkeys(By.xpath("//input[@id='uploadFile']"), Helpers.getCurrentDir() + "src/test/resources/DOCX_File_01.docx");
+        webUI.uploadFileSendkeys(By.xpath("//input[@id='uploadFile']"), Helpers.getCurrentDir() + "src/test/resources/DOCX_File_01.docx");
 
         //Cách 2 mở form local máy nên file là trong ổ đĩa máy tính
-        webUi.uploadFileForm(By.xpath("//input[@id='uploadFile']"), "D:\\Document.csv");
+        webUI.uploadFileForm(By.xpath("//input[@id='uploadFile']"), "D:\\Document.csv");
 
-        WebUI.sleep(3);
+        webUI.sleep(3);
     }
 
     @Test
     public void handleTable1() {
         Log.info("handleTable1");
         driver.get("https://colorlib.com/polygon/notika/data-table.html");
-        webUi.waitForPageLoaded();
-        System.out.println(webUi.getValueTableByColumn(2));
+        webUI.waitForPageLoaded();
+        System.out.println(webUI.getValueTableByColumn(2));
     }
 
     @Test
@@ -132,16 +132,16 @@ public class TestHandle {
     @Test
     public void handlePrintPopup() throws AWTException {
         driver.get("https://pos.anhtester.com/login");
-        webUi.waitForPageLoaded();
+        webUI.waitForPageLoaded();
         driver.findElement(By.xpath("//td[normalize-space()='user01@anhtester.com']")).click();
         driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
         driver.findElement(By.xpath("//a[@role='button']")).click();
         //driver.findElement(By.xpath("//span[normalize-space()='Sale']")).click();
-        webUi.waitForPageLoaded();
+        webUI.waitForPageLoaded();
         driver.findElement(By.xpath("//a[normalize-space()='Manage Sale']")).click();
         driver.findElement(By.xpath("//span[normalize-space()='Print']")).click();
 
-        webUi.sleep(1);
+        webUI.sleep(1);
 
         Set<String> windowHandles = driver.getWindowHandles();
         if (!windowHandles.isEmpty()) {
@@ -151,14 +151,14 @@ public class TestHandle {
         //driver.switchTo().window(driver.getWindowHandles().toArray()[1].toString());
         Robot robotClass = new Robot();
         robotClass.keyPress(KeyEvent.VK_TAB);
-        webUi.sleep(1);
+        webUI.sleep(1);
         robotClass.keyPress(KeyEvent.VK_ENTER);
 
         driver.switchTo().window(driver.getWindowHandles().toArray()[0].toString());
 //        if (!windowHandles.isEmpty()) {
 //            driver.switchTo().window((String) windowHandles.toArray()[windowHandles.size() - 1]);
 //        }
-        webUi.sleep(2);
+        webUI.sleep(2);
     }
 
     @Test(dataProvider = "login")

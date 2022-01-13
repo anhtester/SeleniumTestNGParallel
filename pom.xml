@@ -266,9 +266,9 @@
                     <artifactId>allure-maven</artifactId>
                     <version>${allure-maven.version}</version>
                     <configuration>
-                        <reportVersion>${allure.version}</reportVersion>
+                        <reportVersion>${allure-testng.version}</reportVersion>
                         <allureDownloadUrl>
-                            ${allure.cmd.download.url}/${allure.version}/allure-commandline-${allure-testng.version}.zip
+                            ${allure.cmd.download.url}/${allure-testng.version}/allure-commandline-${allure-testng.version}.zip
                         </allureDownloadUrl>
                     </configuration>
                 </plugin>

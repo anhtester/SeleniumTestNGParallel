@@ -53,8 +53,8 @@ public class ClientsTest extends BaseWeb {
         webUI.waitForPageLoaded();
         clientPage.openClientTabPage();
         // Search lần 1
-        clientPage.enterDataSearchClient("Anh Tester Com 04");
-        webUI.checkContainsSearchTableByColumn(2, "Anh Tester Com 04");
+        clientPage.enterDataSearchClient("Anh Tester Com 05");
+        webUI.checkContainsSearchTableByColumn(2, "Anh Tester Com 05");
         // Search lần 2
         clientPage.enterDataSearchClient("Phamiliar Tech");
         webUI.checkContainsSearchTableByColumn(2, "Phamiliar Tech");

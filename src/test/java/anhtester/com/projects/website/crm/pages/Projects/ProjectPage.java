@@ -24,12 +24,12 @@ public class ProjectPage extends CommonPage {
     public void searchByValue(String value) {
         webUI.clearText(searchInput);
         webUI.setText(searchInput, value);
-        WebUI.sleep(1);
+        webUI.sleep(1);
     }
 
     public void checkContainsSearchTableByColumn(int column, String value) {
         List<WebElement> totalRows = DriverManager.getDriver().findElements(By.xpath("//tbody/tr"));
-        WebUI.sleep(1);
+        webUI.sleep(1);
         System.out.println("");
         System.out.println("Số kết quả cho từ khóa (" + value + "): " + totalRows.size());
 
@@ -44,7 +44,7 @@ public class ProjectPage extends CommonPage {
 
     public void displayValueTableByColumn(int column) {
         List<WebElement> totalRows = DriverManager.getDriver().findElements(By.xpath("//tbody/tr"));
-        WebUI.sleep(1);
+        webUI.sleep(1);
         System.out.println("");
         System.out.println("Số kết quả cho cột (" + column + "): " + totalRows.size());
 

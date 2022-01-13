@@ -71,7 +71,7 @@ public class WebUI {
      *
      * @param object truyền vào object bất kỳ
      */
-    public static void logConsole(@Nullable Object object) {
+    public void logConsole(@Nullable Object object) {
         System.out.println(object);
     }
 
@@ -80,7 +80,7 @@ public class WebUI {
      *
      * @param second là số nguyên dương tương ứng số Giây
      */
-    public static void sleep(int second) {
+    public void sleep(int second) {
         try {
             Thread.sleep(second * 1000);
         } catch (InterruptedException e) {
@@ -643,7 +643,7 @@ public class WebUI {
     //Handle Table
     public void checkContainsSearchTableByColumn(int column, String value) {
         List<WebElement> totalRows = driver.findElements(By.xpath("//tbody/tr"));
-        WebUI.sleep(1);
+        sleep(1);
         Log.info("Số kết quả cho từ khóa (" + value + "): " + totalRows.size());
 
         for (int i = 1; i <= totalRows.size(); i++) {
@@ -658,7 +658,7 @@ public class WebUI {
 
     public ArrayList getValueTableByColumn(int column) {
         List<WebElement> totalRows = driver.findElements(By.xpath("//tbody/tr"));
-        WebUI.sleep(1);
+        sleep(1);
         Log.info("Số kết quả cho cột (" + column + "): " + totalRows.size());
 
         ArrayList arrayList = new ArrayList<String>();

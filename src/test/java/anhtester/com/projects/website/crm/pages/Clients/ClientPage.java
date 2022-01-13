@@ -2,6 +2,7 @@ package anhtester.com.projects.website.crm.pages.Clients;
 
 import anhtester.com.driver.DriverManager;
 import anhtester.com.helpers.ExcelHelpers;
+import anhtester.com.helpers.Helpers;
 import anhtester.com.utils.WebUI;
 import anhtester.com.helpers.Props;
 import anhtester.com.projects.website.crm.pages.CommonPage;
@@ -32,6 +33,7 @@ public class ClientPage extends CommonPage {
 
 
     public void openClientTabPage() {
+        webUI.sleep(1);
         webUI.clickElement(clientTab);
     }
 
