@@ -6,7 +6,7 @@
 
     <groupId>anhtester</groupId>
     <artifactId>com</artifactId>
-    <version>1.0-ANHTESTER</version>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -181,12 +181,14 @@
             <version>${owner.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
+            <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
@@ -219,7 +221,7 @@
     <!-- This profile execute the TestNG suite inside the suites folder on test/resources -->
     <profiles>
         <profile>
-            <id>web-execution</id>
+            <id>clients-parallel</id>
             <build>
                 <plugins>
                     <plugin>
@@ -245,6 +247,10 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
                     <configuration>
+                        <suiteXmlFiles>
+                            <suiteXmlFile>src/test/resources/suites/Clients-parallel.xml</suiteXmlFile>
+                        </suiteXmlFiles>
+
                         <argLine>
                             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                         </argLine>
