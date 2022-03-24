@@ -1,5 +1,9 @@
 package anhtester.com.projects.website.crm.testcases;
 
+import anhtester.com.common.BaseTest;
+import anhtester.com.common.BaseWeb;
+import anhtester.com.driver.DriverManager;
+import anhtester.com.driver.TargetFactory;
 import anhtester.com.helpers.ExcelHelpers;
 import anhtester.com.helpers.Helpers;
 import anhtester.com.manager.BrowserFactory;
@@ -29,8 +33,9 @@ public class TestHandle {
 
     @BeforeMethod
     public void Setup() {
-        //driver = BaseTest.createDriver("chrome"); //Cách khởi tạo thứ 1
-        driver = new BrowserFactory().createDriver("chrome"); //Cách khởi tạo thứ 2
+        driver = new BaseWeb().createBrowser("chrome"); //Cách khởi tạo thứ 1
+//        new BaseWeb().createDriver("chrome"); //Cách khởi tạo thứ 2
+//        driver = DriverManager.getDriver();
         webUI = new WebUI();
     }
 
@@ -38,7 +43,10 @@ public class TestHandle {
     public void handleZoomInZoomOut() {
         driver.get("https://anhtester.com");
         webUI.sleep(1);
-        driver.findElement(By.tagName("html")).sendKeys(Keys.chord(Keys.CONTROL,Keys.SUBTRACT));
+        //driver.findElement(By.tagName("html")).sendKeys(Keys.chord(Keys.CONTROL,Keys.ADD));
+        //driver.findElement(By.tagName("html")).sendKeys(Keys.chord(Keys.CONTROL,Keys.SUBTRACT));
+        webUI.getJsExecutor().executeScript("document.body.style.zoom = '80%';");
+        webUI.sleep(1);
     }
 
     @Test
@@ -188,10 +196,11 @@ public class TestHandle {
 
     @AfterMethod
     public void closeDriver() {
-        if (driver != null) {
-            driver.close();
-            driver.quit();
-        }
+        DriverManager.quit();
+//        if (driver != null) {
+//            driver.close();
+//            driver.quit();
+//        }
     }
 
 }

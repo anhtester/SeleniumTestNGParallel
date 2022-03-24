@@ -35,7 +35,8 @@ public class WebUI {
 
     public WebUI() {
         driver = DriverManager.getDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(IMPLICIT_WAIT));
+        logConsole(driver);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(IMPLICIT_WAIT), Duration.ofMillis(500));
         js = (JavascriptExecutor) driver;
         action = new Actions(driver);
         try {
@@ -43,6 +44,11 @@ public class WebUI {
         } catch (AWTException e) {
             e.printStackTrace();
         }
+    }
+
+    public JavascriptExecutor getJsExecutor(){
+        js = (JavascriptExecutor) driver;
+        return js;
     }
 
     /**

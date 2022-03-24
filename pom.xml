@@ -15,7 +15,7 @@
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
 
-        <selenium.version>4.1.1</selenium.version>
+        <selenium.version>4.1.2</selenium.version>
         <testng.version>7.5</testng.version>
         <webdrivermanager.version>5.1.0</webdrivermanager.version>
         <slf4j.version>1.7.36</slf4j.version>
@@ -131,6 +131,14 @@
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>31.1-jre</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
         <dependency>
             <groupId>org.slf4j</groupId>

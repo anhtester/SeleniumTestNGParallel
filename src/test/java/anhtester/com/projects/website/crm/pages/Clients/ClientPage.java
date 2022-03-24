@@ -1,13 +1,9 @@
 package anhtester.com.projects.website.crm.pages.Clients;
 
-import anhtester.com.driver.DriverManager;
 import anhtester.com.helpers.ExcelHelpers;
-import anhtester.com.helpers.Helpers;
-import anhtester.com.utils.WebUI;
-import anhtester.com.helpers.Props;
+import anhtester.com.helpers.PropertiesHelpers;
 import anhtester.com.projects.website.crm.pages.CommonPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class ClientPage extends CommonPage {
 
@@ -38,7 +34,7 @@ public class ClientPage extends CommonPage {
     }
 
     public void addClient() {
-        ExcelHelpers.setExcelFile(Props.getValue("excelClients"), "AddClient");
+        ExcelHelpers.setExcelFile(PropertiesHelpers.getValue("excelClients"), "AddClient");
 
         webUI.clickElement(addClientBtn);
         webUI.setText(companyNameInput, ExcelHelpers.getCellData("company_name", 2));

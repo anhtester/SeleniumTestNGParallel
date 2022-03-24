@@ -1,10 +1,9 @@
 package anhtester.com.common;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 import anhtester.com.config.Constants;
-import anhtester.com.helpers.Props;
+import anhtester.com.helpers.PropertiesHelpers;
 import anhtester.com.utils.Log;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -121,7 +120,7 @@ public class BaseTest {
     public void initBaseTestSetup() {
         try {
             // Thực thi để khởi tạo driver với browser tương ứng
-            createDriver(Props.getValue("browser"));
+            createDriver(PropertiesHelpers.getValue("browser"));
             Log.info("Tests are starting!");
         } catch (Exception e) {
             Log.info("Error initialize driver..." + e.getStackTrace());

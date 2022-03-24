@@ -1,19 +1,14 @@
 package anhtester.com.projects.website.crm.testcases;
 
-import anhtester.com.common.BaseTest;
 import anhtester.com.common.BaseWeb;
-import anhtester.com.driver.DriverManager;
 import anhtester.com.helpers.Helpers;
-import anhtester.com.utils.WebUI;
-import anhtester.com.helpers.Props;
+import anhtester.com.helpers.PropertiesHelpers;
 import anhtester.com.projects.website.crm.pages.Clients.ClientPage;
 import anhtester.com.projects.website.crm.pages.Dashboard.DashboardPage;
 import anhtester.com.projects.website.crm.pages.SignIn.SignInPage;
-import anhtester.com.listeners.TestListener;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
 @Epic("Regression Test CRM")
@@ -27,7 +22,7 @@ public class ClientsTest extends BaseWeb {
     @Step("Login to CRM system")
     public void SignIn() {
         signInPage = new SignInPage();
-        dashboardPage = signInPage.signIn(Props.getValue("emailAdmin"), Helpers.decrypt(Props.getValue("password")));
+        dashboardPage = signInPage.signIn(PropertiesHelpers.getValue("emailAdmin"), Helpers.decrypt(PropertiesHelpers.getValue("password")));
     }
 
     @BeforeMethod

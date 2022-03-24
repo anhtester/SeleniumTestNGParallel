@@ -1,10 +1,7 @@
 package anhtester.com.projects.website.crm.testcases;
 
-import anhtester.com.helpers.ExcelHelpers;
-import anhtester.com.helpers.Helpers;
-import anhtester.com.helpers.TxtFileHelpers;
-import anhtester.com.helpers.Props;
-import anhtester.com.helpers.DatabaseHelpers;
+import anhtester.com.helpers.*;
+import anhtester.com.helpers.PropertiesHelpers;
 import anhtester.com.utils.Log;
 import org.testng.annotations.Test;
 
@@ -25,12 +22,12 @@ public class TestSimpleCode {
 
     @Test
     public void testGetPropertiesFile() {
-        //Props.setFile("src/test/resources/DataTest.properties");
-        Props.loadAllFiles();
-        System.out.println(Props.getValue("hongthai"));
+        //PropertiesHelpers.setFile("src/test/resources/DataTest.properties");
+        PropertiesHelpers.loadAllFiles();
+        System.out.println(PropertiesHelpers.getValue("hongthai"));
 
-        Props.setFile("src/test/resources/DataTest.properties");
-        Props.setValue("abc", "AN123");
+        PropertiesHelpers.setFile("src/test/resources/DataTest.properties");
+        PropertiesHelpers.setValue("abc", "AN123");
 
         Log.info("testGetPropertiesFile");
     }
@@ -64,12 +61,12 @@ public class TestSimpleCode {
     @Test
     public void TestPropertiesFile() {
         //  Handle Properties file
-        Helpers.logConsole(Props.getValue("browser"));
-        Helpers.logConsole(Props.getValue("url"));
-        Helpers.logConsole(Props.getValue("author"));
-        Helpers.logConsole(Props.getValue("reportName"));
-        Props.setFile("src/test/resources/DataTest.properties");
-        Props.setValue("base.url", "https://anhtetser.com");
+        Helpers.logConsole(PropertiesHelpers.getValue("browser"));
+        Helpers.logConsole(PropertiesHelpers.getValue("url"));
+        Helpers.logConsole(PropertiesHelpers.getValue("author"));
+        Helpers.logConsole(PropertiesHelpers.getValue("reportName"));
+        PropertiesHelpers.setFile("src/test/resources/DataTest.properties");
+        PropertiesHelpers.setValue("base.url", "https://anhtetser.com");
     }
 
     @Test
@@ -81,13 +78,13 @@ public class TestSimpleCode {
     @Test
     public void TestReadAndWriteTxtFile() {
 
-        TxtFileHelpers.ReadTxtFile(Props.getValue("txtFilePath"));
+        TxtFileHelpers.ReadTxtFile(PropertiesHelpers.getValue("txtFilePath"));
     }
 
     @Test
     public void TestExcelFile() {
         //  Handle Excel file
-        ExcelHelpers.setExcelFile(Props.getValue("excelSignIn"), "Sheet1");
+        ExcelHelpers.setExcelFile(PropertiesHelpers.getValue("excelSignIn"), "Sheet1");
         System.out.println(ExcelHelpers.getCellData("username", 2));
         System.out.println(ExcelHelpers.getCellData("password", 2));
         System.out.println(ExcelHelpers.getCellData("pin", 2));

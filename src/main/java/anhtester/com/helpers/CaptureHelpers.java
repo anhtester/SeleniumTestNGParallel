@@ -27,7 +27,7 @@ public class CaptureHelpers extends ScreenRecorder {
     public static ScreenRecorder screenRecorder;
     public String name;
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
-    private static Props props = new Props();
+    private static PropertiesHelpers propertiesHelpers = new PropertiesHelpers();
 
     //Hàm xây dựng
     public CaptureHelpers(GraphicsConfiguration cfg, Rectangle captureArea, Format fileFormat, Format screenFormat,
@@ -53,7 +53,7 @@ public class CaptureHelpers extends ScreenRecorder {
     // Hàm Start record video
     public static void startRecord(String methodName) {
         //Tạo thư mục để lưu file video vào
-        File file = new File("./" + Props.getValue("exportVideoPath") + "/" + methodName + "/");
+        File file = new File("./" + PropertiesHelpers.getValue("exportVideoPath") + "/" + methodName + "/");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = screenSize.width;
         int height = screenSize.height;
@@ -99,7 +99,7 @@ public class CaptureHelpers extends ScreenRecorder {
             // Gọi hàm capture screenshot - getScreenshotAs
             File source = ts.getScreenshotAs(OutputType.FILE);
             // result.getName() lấy tên của test case xong gán cho tên File chụp màn hình
-            FileHandler.copy(source, new File("./" + Props.getValue("exportCapturePath") + "/" + screenName + "_" + dateFormat.format(new Date()) + ".png"));
+            FileHandler.copy(source, new File("./" + PropertiesHelpers.getValue("exportCapturePath") + "/" + screenName + "_" + dateFormat.format(new Date()) + ".png"));
             System.out.println("Screenshot taken: " + screenName);
             Reporter.log("Screenshot taken current URL: " + driver.getCurrentUrl(), true);
         } catch (Exception e) {
