@@ -9,6 +9,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelHelpers {
@@ -23,6 +24,9 @@ public class ExcelHelpers {
     private static Color mycolor;
     private static String excelFilePath;
     private static Map<String, Integer> columns = new HashMap<>();
+
+    public static int rowNumber; //Row Number
+    public static int columnNumber; //Column Number
 
     //    Set Excel file
     public static void setExcelFile(String ExcelPath, String SheetName) {
@@ -51,8 +55,14 @@ public class ExcelHelpers {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            
+
         }
+    }
+
+    //Phương thức này nhận số hàng làm tham số và trả về dữ liệu của hàng đó.
+    public static Row getRowData(int RowNum) {
+        row = sh.getRow(RowNum);
+        return row;
     }
 
     public static String[][] getDataArray(String fileName, String sheetName, int startCol, int totalCols) {
@@ -125,7 +135,7 @@ public class ExcelHelpers {
         }
     }
 
-    // Get data
+    // Get cell data
     public static String getCellData(int rownum, int colnum) {
         try {
             cell = sh.getRow(rownum).getCell(colnum);
@@ -154,8 +164,8 @@ public class ExcelHelpers {
         }
     }
 
-    public static String getCellData(String columnName, int rownum) {
-        return getCellData(rownum, columns.get(columnName));
+    public static String getCellData(String columnName, int rowNum) {
+        return getCellData(rowNum, columns.get(columnName));
     }
 
     public static int getRows() {
@@ -163,11 +173,11 @@ public class ExcelHelpers {
     }
 
     // Write data to excel sheet
-    public static void setCellData(String text, int rownum, int colnum) {
+    public static void setCellData(String text, int rowNum, int colnum) {
         try {
-            row = sh.getRow(rownum);
+            row = sh.getRow(rowNum);
             if (row == null) {
-                row = sh.createRow(rownum);
+                row = sh.createRow(rowNum);
             }
             cell = row.getCell(colnum);
 

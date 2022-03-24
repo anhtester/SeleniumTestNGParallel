@@ -1,5 +1,6 @@
 package anhtester.com.common;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import anhtester.com.config.Constants;
@@ -32,40 +33,40 @@ public class BaseTest {
                 WebDriverManager.chromedriver().setup();
                 driver.set(new ChromeDriver());
                 driver.get().manage().window().maximize();
-                driver.get().manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-                driver.get().manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
+                driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIMEOUT));
+                driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
                 break;
             case "firefox":
                 Log.info("Launching " + browserType + " browser...");
                 WebDriverManager.firefoxdriver().setup();
                 driver.set(new FirefoxDriver());
                 driver.get().manage().window().maximize();
-                driver.get().manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-                driver.get().manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
+                driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIMEOUT));
+                driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
                 break;
             case "opera":
                 Log.info("Launching " + browserType + " browser...");
                 WebDriverManager.operadriver().setup();
                 driver.set(new OperaDriver());
                 driver.get().manage().window().maximize();
-                driver.get().manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-                driver.get().manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
+                driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIMEOUT));
+                driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
                 break;
             case "edge":
                 Log.info("Launching " + browserType + " browser...");
                 WebDriverManager.edgedriver().setup();
                 driver.set(new EdgeDriver());
                 driver.get().manage().window().maximize();
-                driver.get().manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-                driver.get().manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
+                driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIMEOUT));
+                driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
                 break;
             default:
                 Log.info("Browser: " + browserType + " is invalid, Launching Chrome as browser of choice...");
                 WebDriverManager.chromedriver().setup();
                 driver.set(new ChromeDriver());
                 driver.get().manage().window().maximize();
-                driver.get().manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-                driver.get().manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
+                driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIMEOUT));
+                driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
                 break;
         }
 
@@ -79,8 +80,8 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         driver.set(new ChromeDriver());
         driver.get().manage().window().maximize();
-        driver.get().manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-        driver.get().manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
+        driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIMEOUT));
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
         return driver.get();
     }
 
@@ -89,8 +90,8 @@ public class BaseTest {
         WebDriverManager.firefoxdriver().setup();
         driver.set(new FirefoxDriver());
         driver.get().manage().window().maximize();
-        driver.get().manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-        driver.get().manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
+        driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIMEOUT));
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
         return driver.get();
     }
 
@@ -99,8 +100,8 @@ public class BaseTest {
         WebDriverManager.operadriver().setup();
         driver.set(new OperaDriver());
         driver.get().manage().window().maximize();
-        driver.get().manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-        driver.get().manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
+        driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIMEOUT));
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
         return driver.get();
     }
 
@@ -109,8 +110,8 @@ public class BaseTest {
         WebDriverManager.edgedriver().setup();
         driver.set(new EdgeDriver());
         driver.get().manage().window().maximize();
-        driver.get().manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-        driver.get().manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
+        driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIMEOUT));
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
         return driver.get();
     }
 

@@ -23,8 +23,8 @@ public abstract class BaseWeb {
         Props.loadAllFiles();
     }
 
-    @BeforeMethod(alwaysRun = true)
     @Parameters("browser")
+    @BeforeMethod(alwaysRun = true)
     public void createDriver(@Optional("chrome") String browser) {
         WebDriver driver = ThreadGuard.protect(new TargetFactory().createInstance(browser));
         DriverManager.setDriver(driver);

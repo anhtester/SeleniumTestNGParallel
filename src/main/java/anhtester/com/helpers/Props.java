@@ -1,7 +1,5 @@
 package anhtester.com.helpers;
 
-import anhtester.com.helpers.Helpers;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -42,6 +40,18 @@ public class Props {
         properties = new Properties();
         try {
             linkFile = Helpers.getCurrentDir() + relPropertiesFilePath;
+            file = new FileInputStream(linkFile);
+            properties.load(file);
+            file.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void setDefaultFile() {
+        properties = new Properties();
+        try {
+            linkFile = Helpers.getCurrentDir() + relPropertiesFilePathDefault;
             file = new FileInputStream(linkFile);
             properties.load(file);
             file.close();

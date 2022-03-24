@@ -14,7 +14,7 @@ public class SignInPage extends CommonPage {
 
     private String pageUrl = "/signin";
     private String pageText = "";
-    private String pageTitle = "Project Manager | Anh Tester Demo";
+    private String pageTitle = "CRM Project Manager | Anh Tester Demo";
 
     //Sign In element
 //    private By emailInput = By.xpath("//input[@id='email']");
