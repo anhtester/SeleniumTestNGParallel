@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.time.Duration;
 import java.util.*;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class WebUI {
 
     public WebUI() {
         driver = DriverManager.getDriver();
-        wait = new WebDriverWait(driver, IMPLICIT_WAIT);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(IMPLICIT_WAIT));
         js = (JavascriptExecutor) driver;
         action = new Actions(driver);
         try {

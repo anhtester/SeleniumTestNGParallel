@@ -35,6 +35,13 @@ public class TestHandle {
     }
 
     @Test
+    public void handleZoomInZoomOut() {
+        driver.get("https://anhtester.com");
+        webUI.sleep(1);
+        driver.findElement(By.tagName("html")).sendKeys(Keys.chord(Keys.CONTROL,Keys.SUBTRACT));
+    }
+
+    @Test
     public void handleNotificationsBrowser() {
         WebDriver driver = new ChromeDriver(webUI.notificationsBlock());
         driver.manage().window().maximize();

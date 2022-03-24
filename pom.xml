@@ -12,25 +12,25 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java-compiler.version>15</java-compiler.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
 
         <selenium.version>4.1.1</selenium.version>
-        <testng.version>7.4.0</testng.version>
-        <webdrivermanager.version>5.0.3</webdrivermanager.version>
-        <slf4j.version>1.7.31</slf4j.version>
+        <testng.version>7.5</testng.version>
+        <webdrivermanager.version>5.1.0</webdrivermanager.version>
+        <slf4j.version>1.7.36</slf4j.version>
         <aspectj.version>1.9.6</aspectj.version>
         <ashot.version>1.5.4</ashot.version>
-        <log4j.version>2.17.1</log4j.version>
-        <allure-testng.version>2.17.2</allure-testng.version>
-        <allure-maven.version>2.10.0</allure-maven.version>
+        <log4j.version>2.17.2</log4j.version>
+        <allure-testng.version>2.17.3</allure-testng.version>
+        <allure-maven.version>2.11.2</allure-maven.version>
         <allure-environment-writer.version>1.0.0</allure-environment-writer.version>
         <allure.cmd.download.url>
             https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline
         </allure.cmd.download.url>
-        <extentreports.version>5.0.8</extentreports.version>
-        <apache-poi.version>5.0.0</apache-poi.version>
-        <apache-poi-xml.version>5.0.0</apache-poi-xml.version>
+        <extentreports.version>5.0.9</extentreports.version>
+        <apache-poi.version>5.2.2</apache-poi.version>
+        <apache-poi-xml.version>5.2.2</apache-poi-xml.version>
         <owner.version>1.0.12</owner.version>
         <assertj.version>3.22.0</assertj.version>
         <javafaker.version>1.0.2</javafaker.version>
