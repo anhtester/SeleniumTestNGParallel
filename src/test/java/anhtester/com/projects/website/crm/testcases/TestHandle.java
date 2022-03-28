@@ -13,12 +13,22 @@ import anhtester.com.projects.website.crm.pages.SignIn.SignInPage;
 import anhtester.com.helpers.DatabaseHelpers;
 import anhtester.com.utils.WebUI;
 import anhtester.com.utils.Log;
+import com.google.common.util.concurrent.Uninterruptibles;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.HasDevTools;
+import org.openqa.selenium.devtools.v97.network.Network;
+import org.openqa.selenium.devtools.v97.network.model.Headers;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.time.Duration;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 //@Listeners(TestListener.class)
@@ -139,7 +149,7 @@ public class TestHandle {
         // Search cột 2 Title
         projectPage.searchByValue(dataSearch1);
         projectPage.checkContainsSearchTableByColumn(2, dataSearch1);
-        // Search cột 3 Client
+        // Search cột 3 ClientModel
         projectPage.searchByValue(dataSearch2);
         projectPage.checkContainsSearchTableByColumn(3, dataSearch2);
     }
@@ -176,6 +186,48 @@ public class TestHandle {
         webUI.sleep(2);
     }
 
+    @Test
+    public void handleAuthentication() {
+
+        // Authentication username & password
+        String username = "admin";
+        String password = "admin";
+
+        // Get the devtools from the running driver and create a session
+        DevTools devTools = ((HasDevTools) driver).getDevTools();
+        devTools.createSession();
+
+        // Enable the Network domain of devtools
+        devTools.send(Network.enable(java.util.Optional.of(100000), java.util.Optional.of(100000), java.util.Optional.of(100000)));
+        String auth = username + ":" + password;
+
+        // Encoding the username and password using Base64 (java.util)
+        String encodeToString = Base64.getEncoder().encodeToString(auth.getBytes());
+
+        // Pass the network header -> Authorization : Basic <encoded String>
+        Map<String, Object> headers = new HashMap<>();
+        headers.put("Authorization", "Basic " + encodeToString);
+        devTools.send(Network.setExtraHTTPHeaders(new Headers(headers)));
+
+        // Load the application url
+        driver.get("https://the-internet.herokuapp.com/basic_auth");
+        Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(3));
+        String successFullyLoggedInText = driver.findElement(By.xpath("//p")).getText();
+        Assert.assertEquals(successFullyLoggedInText, "Congratulations! You must have the proper credentials.");
+    }
+
+    @DataProvider(name = "login")
+    public Object[][] login() throws Exception {
+
+        System.out.println(ExcelHelpers.getTableArray(Helpers.getCurrentDir() + "src/test/resources/SignInDataExcel.xlsx", "Login", 1));
+
+        Object[][] testObjArray = new Object[][]{ExcelHelpers.getTableArray(Helpers.getCurrentDir() + "src/test/resources/SignInDataExcel.xlsx", "Login", 1)};
+
+        //Object[][] testObjArray = new Object[][]{{"admin02@malinator.com", "123456"}, {"tbl01@malinator.com", "123456"}};
+        System.out.println(testObjArray);
+        return (testObjArray);
+    }
+
     @Test(dataProvider = "login")
     public void loginDataProviderExcelArray(String Username, String Password) {
         System.out.println(Username);
@@ -186,21 +238,10 @@ public class TestHandle {
         driver.findElement(By.id("password")).sendKeys(Password);
         driver.findElement(By.id("login")).click();
     }
-    @DataProvider
-    public Object[][] login() {
-
-        Object[][] testObjArray = ExcelHelpers.getDataArray("src/test/resources/Magento.xlsx", "Login", 2, 3);
-
-        return (testObjArray);
-    }
 
     @AfterMethod
     public void closeDriver() {
         DriverManager.quit();
-//        if (driver != null) {
-//            driver.close();
-//            driver.quit();
-//        }
     }
 
 }

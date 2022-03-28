@@ -10,10 +10,10 @@ public class ClientPage extends CommonPage {
     public ClientPage() {
     }
 
-    public String pageText = "Clients";
+    public String pageText = "ClientModel";
     public String pageUrl = "/clients";
 
-    //Client Element
+    //ClientModel Element
     private By clientTab = By.xpath("//ul[@id='client-tabs']//li[2]");
     private By addClientBtn = By.xpath("//a[normalize-space()='Add client']");
     private By companyNameInput = By.xpath("//input[@id='company_name']");
@@ -37,20 +37,20 @@ public class ClientPage extends CommonPage {
         ExcelHelpers.setExcelFile(PropertiesHelpers.getValue("excelClients"), "AddClient");
 
         webUI.clickElement(addClientBtn);
-        webUI.setText(companyNameInput, ExcelHelpers.getCellData("company_name", 2));
+        webUI.setText(companyNameInput, ExcelHelpers.getCellData(1, "company_name"));
         webUI.clickElement(ownerSelect);
-        webUI.setText(ownerSearchInput, ExcelHelpers.getCellData("owner", 1));
+        webUI.setText(ownerSearchInput, ExcelHelpers.getCellData(1, "owner"));
         webUI.clickElement(ownerFirstItemSelect);
-        webUI.setText(addressInput, ExcelHelpers.getCellData("address", 1));
-        webUI.setText(cityInput, ExcelHelpers.getCellData("city", 1));
-        webUI.setText(stateInput, ExcelHelpers.getCellData("state", 1));
-        webUI.setText(zipInput, ExcelHelpers.getCellData("zip", 1));
-        webUI.setText(countryInput, ExcelHelpers.getCellData("country", 1));
-        webUI.setText(phoneInput, ExcelHelpers.getCellData("phone", 1));
+        webUI.setText(addressInput, ExcelHelpers.getCellData(1, "address"));
+        webUI.setText(cityInput, ExcelHelpers.getCellData(1, "city"));
+        webUI.setText(stateInput, ExcelHelpers.getCellData(1, "state"));
+        webUI.setText(zipInput, ExcelHelpers.getCellData(1, "zip"));
+        webUI.setText(countryInput, ExcelHelpers.getCellData(1, "country"));
+        webUI.setText(phoneInput, ExcelHelpers.getCellData(1, "phone"));
 //        validateuiHelpers.clickElement(closeDialogBtn);
         webUI.clickElement(saveDialogBtn);
-        webUI.setText(searchInput, ExcelHelpers.getCellData("company_name", 2));
-        webUI.checkContainsSearchTableByColumn(2, ExcelHelpers.getCellData("company_name", 2));
+        webUI.setText(searchInput, ExcelHelpers.getCellData(1, "company_name"));
+        webUI.checkContainsSearchTableByColumn(2, ExcelHelpers.getCellData(1, "company_name"));
     }
 
     public void enterDataSearchClient(String value) {

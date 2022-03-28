@@ -3,6 +3,7 @@ package anhtester.com.helpers;
 import java.awt.Color;
 import java.io.*;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -65,11 +66,19 @@ public class ExcelHelpers {
         return row;
     }
 
-    public static String[][] getDataArray(String fileName, String sheetName, int startCol, int totalCols) {
+    public static String[][] getDataArray(String ExcelPath, String sheetName, int startCol, int totalCols) {
 
         String[][] data = null;
         try {
-            fis = new FileInputStream(fileName);
+
+            File f = new File(ExcelPath);
+
+            if (!f.exists()) {
+                f.createNewFile();
+                System.out.println("File doesn't exist, so created!");
+            }
+
+            fis = new FileInputStream(ExcelPath);
             wb = new XSSFWorkbook(fis);
             sh = wb.getSheet(sheetName);
 
@@ -89,6 +98,79 @@ public class ExcelHelpers {
             }
         } catch (Exception e) {
             System.out.println("The exception is: " + e.getMessage());
+        }
+        return data;
+    }
+
+    public static Object[][] getTableArray(String FilePath, String SheetName, int iTestCaseRow) throws Exception {
+
+        String[][] tabArray = null;
+
+        try {
+            FileInputStream ExcelFile = new FileInputStream(FilePath);
+
+            // Access the required test data sheet
+            wb = new XSSFWorkbook(ExcelFile);
+            sh = wb.getSheet(SheetName);
+
+            int startCol = 1;
+            int ci = 0, cj = 0;
+
+            int totalRows = 1;
+            int totalCols = 2;
+
+            tabArray = new String[totalRows][totalCols];
+
+            for (int j = startCol; j <= totalCols; j++, cj++) {
+                tabArray[ci][cj] = getCellData(iTestCaseRow, j);
+                System.out.println(tabArray[ci][cj]);
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Could not read the Excel sheet");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Could not read the Excel sheet");
+            e.printStackTrace();
+        }
+        return (tabArray);
+    }
+
+    public static Object[][] getDataHashTable(String ExcelPath, String SheetName, int startRow, int endRow) {
+
+        Object[][] data = null;
+        try {
+
+            File f = new File(ExcelPath);
+
+            if (!f.exists()) {
+                f.createNewFile();
+                System.out.println("File doesn't exist, so created!");
+            }
+
+            fis = new FileInputStream(ExcelPath);
+            wb = new XSSFWorkbook(fis);
+            sh = wb.getSheet(SheetName);
+
+            int rows = getRowCount();
+            int columns = getColumnCount();
+            System.out.println("Row: " + rows + " - Column: " + columns);
+            data = new Object[endRow - startRow][1];
+            Hashtable<String, String> table = null;
+            for (int rowNums = startRow; rowNums < endRow; rowNums++) {
+                table = new Hashtable<String, String>();
+                for (int colNum = 0; colNum < columns; colNum++) {
+                    // data[rowNums-2][colNum] = excel.getCellData(sheetName, colNum, rowNums);
+                    table.put(getCellData(0, colNum), getCellData(rowNums, colNum));
+                    data[rowNums - startRow][0] = table;
+                }
+            }
+
+            System.out.println(data);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return data;
     }
@@ -164,12 +246,23 @@ public class ExcelHelpers {
         }
     }
 
-    public static String getCellData(String columnName, int rowNum) {
+    public static String getCellData(int rowNum, String columnName) {
         return getCellData(rowNum, columns.get(columnName));
     }
 
     public static int getRows() {
         return sh.getPhysicalNumberOfRows();
+    }
+
+    public static int getRowCount() {
+        int rowCount = sh.getLastRowNum() + 1;
+        return rowCount;
+    }
+
+    public static int getColumnCount() {
+        row = sh.getRow(0);
+        int colCount = row.getLastCellNum();
+        return colCount;
     }
 
     // Write data to excel sheet

@@ -5,14 +5,14 @@
     <test name="Chrome execution Clients Test">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="anhtester.com.projects.website.crm.testcases.ClientsTest"/>
+            <class name="anhtester.com.projects.website.crm.testcases.ClientModelTest"/>
         </classes>
     </test>
 
     <test name="Edge execution Clients Test">
         <parameter name="browser" value="edge"/>
         <classes>
-            <class name="anhtester.com.projects.website.crm.testcases.ClientsTest"/>
+            <class name="anhtester.com.projects.website.crm.testcases.ClientModelTest"/>
         </classes>
     </test>
 

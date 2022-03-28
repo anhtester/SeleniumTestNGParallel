@@ -1,6 +1,7 @@
 package anhtester.com.projects.website.crm.testcases;
 
 import anhtester.com.common.BaseWeb;
+import anhtester.com.driver.DriverManager;
 import anhtester.com.helpers.Helpers;
 import anhtester.com.helpers.PropertiesHelpers;
 import anhtester.com.projects.website.crm.pages.Clients.ClientPage;
@@ -11,9 +12,11 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import org.testng.annotations.*;
 
+import static anhtester.com.config.ConfigurationManager.configuration;
+
 @Epic("Regression Test CRM")
-@Feature("Clients Test")
-public class ClientsTest extends BaseWeb {
+@Feature("ClientModel Test")
+public class ClientModelTest extends BaseWeb {
 
     SignInPage signInPage;
     DashboardPage dashboardPage;
@@ -21,6 +24,7 @@ public class ClientsTest extends BaseWeb {
 
     @Step("Login to CRM system")
     public void SignIn() {
+        DriverManager.getDriver().get(configuration().url());
         signInPage = new SignInPage();
         dashboardPage = signInPage.signIn(PropertiesHelpers.getValue("emailAdmin"), Helpers.decrypt(PropertiesHelpers.getValue("password")));
     }
@@ -30,8 +34,8 @@ public class ClientsTest extends BaseWeb {
         SignIn();
     }
 
-    @Test(priority = 1, description = "Add Client")
-    @Step("Add Client")
+    @Test(priority = 1, description = "Add ClientModel")
+    @Step("Add ClientModel")
     public void AddClient() {
         webUI.waitForPageLoaded();
         clientPage = dashboardPage.openClientPage();
@@ -40,8 +44,8 @@ public class ClientsTest extends BaseWeb {
         clientPage.addClient();
     }
 
-    @Test(priority = 2, description = "Search Client")
-    @Step("Search Client")
+    @Test(priority = 2, description = "Search ClientModel")
+    @Step("Search ClientModel")
     public void SearchClient() {
         webUI.waitForPageLoaded();
         clientPage = dashboardPage.openClientPage();

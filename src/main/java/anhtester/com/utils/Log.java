@@ -22,6 +22,10 @@ public class Log {
         Log.error(message);
     }
 
+    public static void error (String message, Throwable throwable) {
+        Log.error(message);
+    }
+
     //Fatal Level Logs
     public static void fatal (String message) {
         Log.fatal(message);

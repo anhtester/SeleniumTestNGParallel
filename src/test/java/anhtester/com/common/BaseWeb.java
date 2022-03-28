@@ -28,7 +28,7 @@ public class BaseWeb {
     public void createDriver(@Optional("chrome") String browser) {
         WebDriver driver = ThreadGuard.protect(new TargetFactory().createInstance(browser));
         DriverManager.setDriver(driver);
-        DriverManager.getDriver().get(configuration().url());
+
         webUI = new WebUI();
     }
 

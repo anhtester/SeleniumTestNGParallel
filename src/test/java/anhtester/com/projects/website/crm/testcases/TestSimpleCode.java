@@ -85,16 +85,15 @@ public class TestSimpleCode {
     public void TestExcelFile() {
         //  Handle Excel file
         ExcelHelpers.setExcelFile(PropertiesHelpers.getValue("excelSignIn"), "Sheet1");
-        System.out.println(ExcelHelpers.getCellData("username", 2));
-        System.out.println(ExcelHelpers.getCellData("password", 2));
-        System.out.println(ExcelHelpers.getCellData("pin", 2));
+        System.out.println(ExcelHelpers.getCellData(2,"username"));
+        System.out.println(ExcelHelpers.getCellData(2,"password"));
+        System.out.println(ExcelHelpers.getCellData(2,"pin"));
         ExcelHelpers.setCellData("pass", 1, 3);
     }
 
     @Test()
     public void testExcelFile() throws Exception {
-
-        ExcelHelpers.getDataArray("src/test/resources/Magento.xlsx", "storeProduct", 0, 2);
+        System.out.println(ExcelHelpers.getDataArray(Helpers.getCurrentDir() + "src/test/resources/SignInDataExcel.xlsx", "Login", 0, 2));
     }
 
     @Test

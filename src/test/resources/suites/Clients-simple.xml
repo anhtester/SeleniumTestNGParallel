@@ -5,7 +5,7 @@
     <test name="Chrome execution ClientsTest">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="anhtester.com.projects.website.crm.testcases.ClientsTest"/>
+            <class name="anhtester.com.projects.website.crm.testcases.ClientModelTest"/>
         </classes>
     </test>
 
