@@ -3,20 +3,18 @@ package anhtester.com.driver;
 import anhtester.com.enums.Target;
 import anhtester.com.exceptions.TargetNotValidException;
 import anhtester.com.utils.Log;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.URL;
 
-import static anhtester.com.config.ConfigurationManager.configuration;
+import static anhtester.com.config.ConfigManager.getConfig;
 
 public class TargetFactory {
 
     public WebDriver createInstance(String browser) {
-        Target target = Target.valueOf(configuration().target().toUpperCase());
+        Target target = Target.valueOf(getConfig().target().toUpperCase());
         WebDriver webdriver;
 
         switch (target) {
@@ -35,7 +33,7 @@ public class TargetFactory {
     private RemoteWebDriver createRemoteInstance(MutableCapabilities capability) {
         RemoteWebDriver remoteWebDriver = null;
         try {
-            String gridURL = String.format("http://%s:%s", configuration().gridUrl(), configuration().gridPort());
+            String gridURL = String.format("http://%s:%s", getConfig().gridUrl(), getConfig().gridPort());
 
             remoteWebDriver = new RemoteWebDriver(new URL(gridURL), capability);
         } catch (java.net.MalformedURLException e) {

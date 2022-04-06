@@ -1,6 +1,6 @@
 package anhtester.com.report;
 
-import anhtester.com.manager.BrowserFactory;
+import anhtester.com.driver.DriverManager;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
@@ -31,7 +31,7 @@ public class ExtentTestManager {
      */
     public static void addScreenShot(String message) {
         String base64Image = "data:image/png;base64,"
-                + ((TakesScreenshot) BrowserFactory.getDriver()).getScreenshotAs(OutputType.BASE64);
+                + ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BASE64);
         getTest().log(Status.INFO, message,
                 getTest().addScreenCaptureFromBase64String(base64Image).getModel().getMedia().get(0));
     }
@@ -45,7 +45,7 @@ public class ExtentTestManager {
     public static void addScreenShot(Status status, String message) {
 
         String base64Image = "data:image/png;base64,"
-                + ((TakesScreenshot) BrowserFactory.getDriver()).getScreenshotAs(OutputType.BASE64);
+                + ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BASE64);
         getTest().log(status, message,
                 getTest().addScreenCaptureFromBase64String(base64Image).getModel().getMedia().get(0));
     }

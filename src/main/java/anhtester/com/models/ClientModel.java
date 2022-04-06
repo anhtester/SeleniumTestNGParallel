@@ -1,4 +1,4 @@
-package anhtester.com.projects.website.crm.models;
+package anhtester.com.models;
 
 public class ClientModel {
 

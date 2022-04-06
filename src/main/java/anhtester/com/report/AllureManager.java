@@ -8,7 +8,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-import static anhtester.com.config.ConfigurationManager.configuration;
+import static anhtester.com.config.ConfigManager.getConfig;
 import static org.openqa.selenium.OutputType.BYTES;
 
 public class AllureManager {
@@ -19,14 +19,14 @@ public class AllureManager {
     public static void setAllureEnvironmentInformation() {
         AllureEnvironmentWriter.allureEnvironmentWriter(
                 ImmutableMap.<String, String>builder().
-                        put("Test URL", configuration().url()).
-                        put("Target execution", configuration().target()).
-                        put("Global timeout", String.valueOf(configuration().timeout())).
-                        put("Headless mode", String.valueOf(configuration().headless())).
-                        put("Faker locale", configuration().faker()).
-                        put("Local browser", configuration().browser()).
-                        put("Grid URL", configuration().gridUrl()).
-                        put("Grid port", configuration().gridPort()).
+                        put("Test URL", getConfig().url()).
+                        put("Target execution", getConfig().target()).
+                        put("Global timeout", String.valueOf(getConfig().timeout())).
+                        put("Headless mode", String.valueOf(getConfig().headless())).
+                        put("Faker locale", getConfig().faker()).
+                        put("Local browser", getConfig().browser()).
+                        put("Grid URL", getConfig().gridUrl()).
+                        put("Grid port", getConfig().gridPort()).
                         build());
     }
 

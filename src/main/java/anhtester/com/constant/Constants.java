@@ -1,4 +1,4 @@
-package anhtester.com.config;
+package anhtester.com.constant;
 
 import anhtester.com.helpers.PropertiesHelpers;
 

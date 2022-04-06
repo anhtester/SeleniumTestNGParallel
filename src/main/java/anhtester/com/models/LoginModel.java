@@ -1,4 +1,4 @@
-package anhtester.com.projects.website.crm.models;
+package anhtester.com.models;
 
 public class LoginModel {
     private String email;
@@ -10,9 +10,7 @@ public class LoginModel {
         this.password = password;
     }
 
-    public LoginModel(String[][] excel) {
-
-    }
+    public LoginModel() {}
 
     public String getEmail() {
         return email;

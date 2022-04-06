@@ -1,6 +1,6 @@
 package anhtester.com.utils;
 
-import anhtester.com.config.Constants;
+import anhtester.com.constant.Constants;
 import anhtester.com.driver.DriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
@@ -343,7 +343,7 @@ public class WebUI {
 
     public boolean verifyAlertPresent(int timeOut) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, timeOut);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
             wait.until(ExpectedConditions.alertIsPresent());
             return true;
         } catch (Throwable error) {
@@ -683,7 +683,7 @@ public class WebUI {
     //    Wait Element
     public void waitForElementVisible(By by, int timeOut) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, timeOut);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
             wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         } catch (Throwable error) {
             Assert.fail("Hết thời gian chờ Element hiển thị.");
@@ -692,7 +692,7 @@ public class WebUI {
 
     public void waitForElementClickable(By by, int timeOut) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, timeOut);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
             wait.until(ExpectedConditions.elementToBeClickable(findWebElement(by)));
         } catch (Throwable error) {
             Assert.fail("Hết thời gian chờ Element sẵn sàng để Click.");
@@ -701,7 +701,7 @@ public class WebUI {
 
     public void waitForElementPresent(By by, int timeOut) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, timeOut);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
             wait.until(ExpectedConditions.presenceOfElementLocated(by));
         } catch (Throwable error) {
             Assert.fail("Hết thời gian chờ Element tồn tại.");
@@ -710,7 +710,7 @@ public class WebUI {
 
     public boolean verifyElementAttributeValue(By by, String attribute, String value, int timeOut) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, timeOut);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
             wait.until(ExpectedConditions.attributeToBe(by, attribute, value));
             return true;
         } catch (Throwable error) {
@@ -721,7 +721,7 @@ public class WebUI {
 
     public boolean verifyElementHasAttribute(By by, String attribute, int timeOut) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, timeOut);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
             wait.until(ExpectedConditions.attributeToBeNotEmpty(findWebElement(by), attribute));
             return true;
         } catch (Throwable error) {
@@ -755,7 +755,7 @@ public class WebUI {
         };
 
         try {
-            wait = new WebDriverWait(driver, PAGE_LOAD_TIMEOUT);
+            wait = new WebDriverWait(driver, Duration.ofSeconds(PAGE_LOAD_TIMEOUT));
             wait.until(jQueryLoad);
             wait.until(jsLoad);
         } catch (Throwable error) {

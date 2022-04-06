@@ -14,13 +14,13 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 
-public class TestQRCode extends BaseTest {
+public class TestQRCode {
 
     WebDriver driver = null;
 
     @BeforeClass
     public void setupBrowser() {
-        driver = getDriver();
+        driver = new BaseTest().createBrowser("chrome");
     }
 
     @Test

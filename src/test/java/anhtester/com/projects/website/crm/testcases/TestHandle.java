@@ -1,12 +1,9 @@
 package anhtester.com.projects.website.crm.testcases;
 
 import anhtester.com.common.BaseTest;
-import anhtester.com.common.BaseWeb;
 import anhtester.com.driver.DriverManager;
-import anhtester.com.driver.TargetFactory;
 import anhtester.com.helpers.ExcelHelpers;
 import anhtester.com.helpers.Helpers;
-import anhtester.com.manager.BrowserFactory;
 import anhtester.com.projects.website.crm.pages.Dashboard.DashboardPage;
 import anhtester.com.projects.website.crm.pages.Projects.ProjectPage;
 import anhtester.com.projects.website.crm.pages.SignIn.SignInPage;
@@ -43,8 +40,8 @@ public class TestHandle {
 
     @BeforeMethod
     public void Setup() {
-        driver = new BaseWeb().createBrowser("chrome"); //Cách khởi tạo thứ 1
-//        new BaseWeb().createDriver("chrome"); //Cách khởi tạo thứ 2
+        driver = new BaseTest().createBrowser("chrome"); //Cách khởi tạo thứ 1
+//        new BaseTest().createDriver("chrome"); //Cách khởi tạo thứ 2
 //        driver = DriverManager.getDriver();
         webUI = new WebUI();
     }

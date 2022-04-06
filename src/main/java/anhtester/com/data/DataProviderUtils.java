@@ -1,10 +1,10 @@
-package anhtester.com.projects.website.crm.models;
+package anhtester.com.data;
 
 import anhtester.com.helpers.ExcelHelpers;
 import anhtester.com.helpers.Helpers;
 import org.testng.annotations.DataProvider;
 
-public class DataTestProviderFactory {
+public class DataProviderUtils {
 
     @DataProvider(name = "LoginData")
     public Object[][] getLoginData() {
